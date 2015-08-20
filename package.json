@@ -1,0 +1,16 @@
+{
+  "name": "text_adventure",
+  "version": "1.0.0",
+  "description": "Building a basic text adventure game to illustrate OOP principles.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "author": "Justin Silvestre",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.2.19",
+    "underscore-node": "^0.1.2"
+  }
+}
