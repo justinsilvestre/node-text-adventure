@@ -5,12 +5,17 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "node lib/main.js"
   },
   "author": "Justin Silvestre",
   "license": "ISC",
   "dependencies": {
+    "jasmine-node": "^1.14.5",
     "readline-sync": "^1.2.19",
     "underscore-node": "^0.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/justinsilvestre/node-text-adventure.git"
   }
 }
