@@ -1,42 +1,24 @@
-var readlineSync = require('readline-sync');
-var actions = require('./actions.js');
-var player = require('./player.js')
+var commands = require('./commands.js');
+var actions = require('./actions.js')
+var player = require('./player.js');
+var promptInput = require('./prompt-input.js');
+var Coordinate = require('./coordinate.js');
 
-module.exports = function() {
+// Game class
+var Game = function() {
 	var game = this;
+
+	// Game state
 	game.on = true;
-
-	game.prompt = function(prompt, options) {
-		var resolved = false;
-		while (!resolved) {
-			var input = readlineSync.question(prompt + '\n');
-			if (game.hasAction(input)) {
-			} else {
-				resolved = true;
-				return input;
-			}
+	game.map = [];
+	for (var i = 0; i < 3; i++) {
+		game.map[i] = [];
+		for (var j = 0; j < 3; j++) {
+			game.map[i][j] = new Coordinate();
 		}
-	};
+	}
 
-	game.hasAction = function(input) {
-		var allWords = input.split(' ');
-		var firstWord = allWords.shift();
-		if (actions.hasOwnProperty(firstWord)) {
-			actions[firstWord].apply(this, allWords);
-			return true;
-		} else {
-			return false;
-		}
-	};
-
-	game.welcome = function() {
-		player.name = game.prompt('Hello! What is your name?');
-		console.log('Hello, ' + player.name);
-		// if it's 'status', then give status, and repeat task.
-		// otherwise, return the next task
-		return game.welcome;
-	};
-	game.nextTask = game.welcome;
+	this.nextTask = actions.welcome;
 
 	game.start = function() {
 		while (game.on) {
@@ -45,3 +27,5 @@ module.exports = function() {
 	};
 
 };
+
+module.exports = Game;
